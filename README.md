@@ -17,10 +17,10 @@ This project compares two types of time series forecast models. These models pre
 
 
 ## Results
- | Method                          | Accuracy | RMSE | MAE |
-|---------------------------------|----------|------|-----|
-| **Prophet** | **72%**  | **10.0212** | **8.749145** |
-| Auto Regression | 66% | 11.0108 | 9.3131 |
+ | Method                          | RMSE | MAE |
+|---------------------------------|------|-----|
+| **Prophet** | **10.0212** | **8.749145** |
+| Auto Regression | 11.0108 | 9.3131 |
 
 
 ## Usage
