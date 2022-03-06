@@ -21,15 +21,54 @@ This project compares a Prophet model and an Autoregression model. Prophet is a 
 ## Results
  | Method                          | RMSE | MAE |
 |---------------------------------|:------:|:-----:|
-| **Prophet** | **10.0212** | **8.749145** |
-| Auto Regression | 11.0108 | 9.3131 |
+| **Prophet** | 10.0212 | 8.749145 |
+| **Auto Regression** | 11.0108 | 9.3131 |
 
 
 ## Usage
 
+### **Loading Prophet Model**
+
 To implement the Prophet model to use in another project, you need to load the model into your project. 
 
-To do this first you need to make sure you have make sure you have the 
+To do this first you need to make sure you have make sure you have the `Prophet_model/Prophet_model.pkl` file. If you followed the installation instructions you should have this file in the `Prophet_model` folder. Once you have this file we can load it into your project.
+
+Open up your python file where you want the model then run this:
+
+```python
+import pickle
+
+with open("path/to/Prophet_model.pkl", "rb") as f:
+    model = pickle.load(f)
+```
+
+The prophet model will be stored in the variable `model`. Then, you can use it like any other prophet model.
+
+### **Loading AR Model**
+
+Loading the AR model into a different project follows a similar process to the prophet model. Make sure you have the file `AR_model/ar_model.pkl`. This can be found in the AR_model folder. Then, you need to run this code in your python file you want the model in:
+
+```python
+from statsmodels.tsa.ar_model import AutoRegResults
+import numpy
+
+model = AutoRegResults.load('ar_model.pkl')
+data = numpy.load('ar_data.npy')
+last_ob = numpy.load('ar_obs.npy')
+```
+
+To make a prediction with this model you need to run:
+
+```python
+# This Predicts the next observation
+predictions = model.predict(start=len(data), end=len(data))
+yhat = predictions[0] + last_ob[0] # 0 is the next observation, 1 is the 2nd etc...
+print(f"Prediction: {yhat}")
+```
+
+This should give you the value the model predicted. 
+
+### **Data Format**
 
 Use this space to show useful examples of how a project can be used. For course projects, include which file to execute and the format of any input variables.
 
