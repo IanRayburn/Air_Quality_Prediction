@@ -70,14 +70,27 @@ This should give you the value the model predicted.
 
 ### **Data Format**
 
-Use this space to show useful examples of how a project can be used. For course projects, include which file to execute and the format of any input variables.
+Both of these models need the data to be formatted in two specific ways.
 
-Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+**Prophet data format**
+
+The data frame for a prophet model needs two columns, one for the Timestamp and one for the data you are trying to predict. The data for a prophet model needs to have specific column name. The Timestamp column needs to be called ds and the column you are trying to predict needs to be called y. The y column has to be numeric. The Timestamp column needs to be in either "YYYY-MM-DD" or "YYYY-MM-DD HH:MM:SS". When using `pandas.read_csv()`, you need to set the column indexing to 1. This is default for the function, so you do not have to pass a parameter to the function.
+
+_For more info, please refer to the [Prophet Documentation](https://facebook.github.io/prophet/docs/quick_start.html#python-api)_
+
+**AR data format**
+
+This model needs two columns, one for the Timestamp and one for the value you are trying to predict. The AR model does not require specific column names. In the notebook I renamed the column names to the prophet requirements to keep it easier to track while going in between the two models. When using `pandas.read_csv()`, you need to set a couple of parameters.
+
+This is what the `pandas.read_csv()` should look like:
+
+```python
+pandas.read_csv("path/to/data", index_col=0, parse_dates=True, squeeze=True)
+```
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
 
-<!-- Authors -->
 ## Authors
 
 Your Name - [IanRayburn](https://github.com/IanRayburn) - ianrayburn5@gmail.com
@@ -85,15 +98,8 @@ Your Name - [IanRayburn](https://github.com/IanRayburn) - ianrayburn5@gmail.com
 Project Link: [https://github.com/IanRayburn/Air_Quality_Prediction](https://github.com/IanRayburn/Air_Quality_Prediction)
 
 
-<!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 
-You can acknowledge any individual, group, institution or service.
-* [Catia Silva](https://faculty.eng.ufl.edu/catia-silva/)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Img Shields](https://shields.io)
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Pages](https://pages.github.com)
-* [Animate.css](https://daneden.github.io/animate.css)
-* [Loaders.css](https://connoratherton.com/loaders)
-* [Slick Carousel](https://kenwheeler.github.io/slick)
+* [README Template](https://github.com/catiaspsilva/README-template/blob/main/README.md#about-the-project)
+* [AR model tutorial](https://machinelearningmastery.com/make-predictions-time-series-forecasting-python/)
+* [Prophet Offical Website](https://facebook.github.io/prophet/)
