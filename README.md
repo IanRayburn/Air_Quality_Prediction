@@ -88,7 +88,6 @@ This is what the `pandas.read_csv()` should look like:
 pandas.read_csv("path/to/data", index_col=0, parse_dates=True, squeeze=True)
 ```
 
-_For more examples, please refer to the [Documentation](https://example.com)_
 
 
 ## Authors
