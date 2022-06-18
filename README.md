@@ -21,9 +21,22 @@ This project compares a Prophet model and an Autoregression model. Prophet is a 
 ## Results
  | Method                          | RMSE | MAE |
 |---------------------------------|:------:|:-----:|
-| **Prophet** | 10.0212 | 8.749145 |
-| **Auto Regression** | 11.0108 | 9.3131 |
+| **Prophet** | 10.034316 | 8.797047 |
+| **Auto Regression** | 11.010766 | 9.313077 |
 
+From these results, the obvious choice for the data is the Prophet model. However, on closer inspection of the predicted values from each model overlayed on the real values (Fig. 1, Fig. 2), the AR model outperforms the Prophet model. 
+
+![Fig. 1](README_images/Figure_1_Prophet.png)
+
+*Fig. 1* shown above shows the predicted values from the Prophet model on top of the real values. From the image, you can see how the model predicts mostly around the average value in the dataset as shown in *Fig. 2*. 
+
+![Fig. 2](README_images/Figure_2_Prophet.png)
+
+![Fig. 3](README_images/Figure_3_AR.png)
+
+*Fig. 3* above shows the predicted values from the AR model on top of the real values. The image shows that the AR model's prediction is more lined up with the dataset. The predicts show more of a variety of predicted values.
+
+When predicting air quality it is very important to predict the extreme values to make a judgment on whether the air is safe to breathe. The Prophet model predicts mostly around the mid-40s PM10. This puts the air quality on the high end of the 0-50 PM10 range. According to [airnow.gov](https://www.airnow.gov/aqi/aqi-basics/) in this range, the air quality is good for most people and does not pose any or little risk. The dataset's values can reach 60 PM10. [airnow.gov](https://www.airnow.gov/aqi/aqi-basics/) shows values from 51 to 100 PM10 can be harmful to those that are very sensitive to air pollution. In a situation where the PM10 crossed 50 and the Prophet model predicted the average, a more sensitive person may be misled into believing that the air quality is safe for them. The AR model would predict a value that would better represent the danger level.  
 
 ## Usage
 
